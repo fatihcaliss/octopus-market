@@ -1,15 +1,26 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import useGetAllCategories from "@/hooks/useGetAllCategories";
+import { debounce } from "@/utils/debounce/debounce";
 
 interface IProductsFilterContainerProps {
+  setFilterCategory: Dispatch<SetStateAction<object>>;
   setFilterParams: Dispatch<SetStateAction<object>>;
 }
 
 export const ProductsFilterContainer = ({
+  setFilterCategory,
   setFilterParams,
 }: IProductsFilterContainerProps) => {
   const { categories, isFetching } = useGetAllCategories();
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
+  const onChange = (e: any, name: string) =>
+    updateDebounceText(e.target.value, name);
+  const updateDebounceText = debounce((text, name) => {
+    setFilterParams((prev) => {
+      return !!text && { ...prev, [name]: text };
+    });
+  });
 
   const handleCategoryChange = (categoryName: string) => {
     setSelectedCategory((prevSelectedCategory) =>
@@ -18,7 +29,7 @@ export const ProductsFilterContainer = ({
   };
 
   const handleFilter = () => {
-    setFilterParams((prevParams) => ({
+    setFilterCategory((prevParams) => ({
       ...prevParams,
       category: selectedCategory,
     }));
@@ -53,7 +64,7 @@ export const ProductsFilterContainer = ({
           id="default-search"
           className="block w-full p-4 ps-10 text-sm border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300 text-gray-800"
           placeholder="Quick Search"
-          required
+          onChange={(e) => onChange(e, "q")}
         />
       </div>
 
@@ -78,7 +89,7 @@ export const ProductsFilterContainer = ({
         </div>
       )}
       <button
-        className="mt-6 px-4 py-2 bg-[#1E293B] text-white rounded-md hover:bg-[#334563] focus:outline-none focus:ring-2 focus:bg-[#334563] disabled:bg-blue-300"
+        className="mt-6 px-4 py-2 bg-[#1E293B] text-white rounded-md hover:bg-[#334563] focus:outline-none focus:ring-2 focus:bg-[#334563] disabled:bg-[#1e293b8d]"
         onClick={handleFilter}
         disabled={selectedCategory === null}
       >
