@@ -1,5 +1,6 @@
 import { IProduct } from "@/models/product.model";
 import Image from "next/image";
+import Link from "next/link";
 
 interface IProductCardProps {
   product: IProduct;
@@ -44,32 +45,40 @@ export const ProductCard = ({ product }: IProductCardProps) => {
 
   return (
     <div className="p-4 bg-white shadow-lg rounded-lg">
-      <div className="relative w-full h-48">
-        <Image
-          src={product.thumbnail}
-          alt={product.title}
-          className="object-cover rounded-lg"
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
-      </div>
-      <div className="mt-4">
-        <h3 className="text-lg font-semibold">{product.title}</h3>
-        <p className="text-sm text-gray-500">{product.category}</p>
-        <p className="text-lg font-semibold mt-2">${product.price}</p>
-        <div className="flex items-center mt-2">
-          <div className="flex">
-            {filledStars}
-            {emptyStars}
-          </div>
-          <span className="ml-1 text-gray-500">
-            {product.rating.toFixed(1)}
-          </span>
+      <Link href={`/products/${product.id}`}>
+        <div className="relative w-full h-48">
+          <Image
+            src={product.thumbnail}
+            alt={product.title}
+            className="object-cover rounded-lg"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
         </div>
-        <button className="bg-[#00B500] text-white px-4 py-2 mt-2 w-full rounded-md">
-          Add to Cart
-        </button>
-      </div>
+        <div className="mt-4">
+          <h3 className="text-lg font-semibold">{product.title}</h3>
+          <p className="text-sm text-gray-500">{product.category}</p>
+          <p className="text-lg font-semibold mt-2">${product.price}</p>
+          <div className="flex items-center mt-2">
+            <div className="flex">
+              {filledStars}
+              {emptyStars}
+            </div>
+            <span className="ml-1 text-gray-500">
+              {product.rating.toFixed(1)}
+            </span>
+          </div>
+          <button
+            className=" bg-[#00B500] text-white px-4 py-2 mt-2 w-full rounded-md z-50"
+            onClick={(e) => {
+              e.preventDefault();
+              //   e.stopPropagation();
+            }}
+          >
+            Add to Cart
+          </button>
+        </div>
+      </Link>
     </div>
   );
 };

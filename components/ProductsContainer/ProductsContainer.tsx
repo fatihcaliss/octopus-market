@@ -92,7 +92,7 @@ export const ProductsContainer = ({
               </div>
               <div className="mt-10 mb-20 flex justify-center">
                 <button
-                  className="bg-gray-200 px-4 py-2 mr-2 rounded-lg"
+                  className="bg-gray-200 px-4 py-2 mr-2 rounded-lg hover:bg-gray-400"
                   onClick={() => handlePageChange(page - 1)}
                   disabled={page === 1}
                 >
@@ -104,9 +104,9 @@ export const ProductsContainer = ({
                 ).map((pageNumber) => (
                   <button
                     key={pageNumber}
-                    className={`px-4 py-2 mx-2 rounded-lg ${
+                    className={`px-4 py-2 mx-2 rounded-lg hover:bg-gray-400 ${
                       page === pageNumber
-                        ? "bg-[#00B500] text-white"
+                        ? "bg-[#00B500] text-white hover:bg-[#45b500]"
                         : "bg-gray-200"
                     }`}
                     onClick={() => handlePageChange(pageNumber)}
@@ -115,7 +115,7 @@ export const ProductsContainer = ({
                   </button>
                 ))}
                 <button
-                  className="bg-gray-200 px-4 py-2 ml-2 rounded-lg"
+                  className="bg-gray-200 px-4 py-2 ml-2 rounded-lg hover:bg-gray-400"
                   onClick={() => handlePageChange(page + 1)}
                   disabled={page === totalPages}
                 >

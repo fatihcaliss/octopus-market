@@ -19,7 +19,7 @@ const useGetProducts = (filterParams: IFilterParams) => {
   } = useQuery<IProductsResponse>({
     queryKey: ["getProducts", filterParams],
     queryFn: () => fetchProducts(filterParams),
-    // enabled: !!productId,
+    enabled: filterParams.enabled,
   });
 
   return { productsData, error, isFetching };

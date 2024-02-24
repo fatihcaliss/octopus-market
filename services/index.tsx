@@ -1,4 +1,3 @@
-// import queryMaker from '@/utils/queryMaker';
 import queryMaker from "@/utils/queryMaker";
 import axios from "axios";
 
@@ -26,6 +25,22 @@ export const fetchProducts = async (filterParams: {
 export const fetchProductsByCategoryName = async (categoryName: string) => {
   const response = await axios.get(
     `https://dummyjson.com/products/category/${categoryName}`
+  );
+  return response.data;
+};
+
+// Function to fetch specific product by ID
+export const fetchProductById = async (productId: string) => {
+  const response = await axios.get(
+    `https://dummyjson.com/products/${productId}`
+  );
+  return response.data;
+};
+
+// Function to fetch specific product by ID
+export const fetchProductCommentsById = async (productId: string) => {
+  const response = await axios.get(
+    `https://dummyjson.com/comments/${productId}`
   );
   return response.data;
 };
