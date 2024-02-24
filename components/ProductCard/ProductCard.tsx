@@ -49,9 +49,8 @@ export const ProductCard = ({ product }: IProductCardProps) => {
           src={product.thumbnail}
           alt={product.title}
           className="object-cover rounded-lg"
-          //   width={192}
-          //   height={192}
-          layout="fill"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </div>
       <div className="mt-4">

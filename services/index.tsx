@@ -21,3 +21,11 @@ export const fetchProducts = async (filterParams: {
   );
   return response.data;
 };
+
+// Function to fetch specific category by Name
+export const fetchProductsByCategoryName = async (categoryName: string) => {
+  const response = await axios.get(
+    `https://dummyjson.com/products/category/${categoryName}`
+  );
+  return response.data;
+};

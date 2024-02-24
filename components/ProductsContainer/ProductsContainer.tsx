@@ -1,25 +1,32 @@
 import { useState } from "react";
 import useGetProducts from "@/hooks/useGetProducts";
 import { ProductCard } from "../ProductCard/ProductCard";
+import useGetCategoryProducts from "@/hooks/useGetCategoryProduct";
 
 interface IProductsContainerProps {
   filterParams: Record<string, string>;
+  filterCategory: Record<string, string>;
 }
 
 export const ProductsContainer = ({
   filterParams,
+  filterCategory,
 }: IProductsContainerProps) => {
   const [page, setPage] = useState(1);
   const { productsData, isFetching } = useGetProducts({
     pagination: { limit: 9, skip: (page - 1) * 9 },
     q: filterParams.q,
+    enabled: !filterCategory?.category,
   });
 
+  const { categorizedProducts, isLoading } = useGetCategoryProducts(
+    filterCategory?.category
+  );
+  console.log("filterCategory", filterCategory);
+  console.log("categorizedProducts", categorizedProducts);
+
   const total: number = productsData?.total || 0;
-
   const totalPages = Math.ceil(total / 9);
-
-  //   console.log("==>", filterParams);
 
   const handlePageChange = (newPage: number) => {
     if (newPage >= 1 && newPage <= totalPages) {

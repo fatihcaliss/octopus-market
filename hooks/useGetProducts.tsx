@@ -8,6 +8,7 @@ interface IFilterParams {
     limit: number;
     skip: number;
   };
+  enabled: boolean;
 }
 
 const useGetProducts = (filterParams: IFilterParams) => {

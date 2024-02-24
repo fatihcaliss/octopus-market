@@ -8,8 +8,6 @@ const ProductsPage = () => {
   const [filterCategory, setFilterCategory] = useState({});
   const [filterParams, setFilterParams] = useState({});
 
-  // console.log("filterParams", filterParams);
-
   return (
     <div className="grid grid-cols-12 gap-4 mt-8 mx-40">
       <div className="col-span-12 md:col-span-4">
@@ -19,7 +17,10 @@ const ProductsPage = () => {
         />
       </div>
       <div className="col-span-12 md:col-span-8">
-        <ProductsContainer filterParams={filterParams} />
+        <ProductsContainer
+          filterParams={filterParams}
+          filterCategory={filterCategory}
+        />
       </div>
     </div>
   );

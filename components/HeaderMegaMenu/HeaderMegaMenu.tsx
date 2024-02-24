@@ -1,37 +1,30 @@
 import Image from "next/image";
 import Link from "next/link";
+import { LogInButton } from "../LoginButon/LoginButton";
 
 export const HeaderMegaMenu = () => {
   return (
-    <nav className="w-full bg-white dark:bg-slate-900 flex p-4  items-center justify-between">
+    <nav className="w-full bg-white flex p-4  items-center justify-between border border-b-2">
       <div className="inline-flex space-x-2">
         <div className="h-8 w-auto">
-          <Image
-            src="/images/octopusNavLogo.svg"
-            alt="Octopus Market Logo"
-            width={170}
-            height={36}
-            // className="dark:invert"
-          />
+          <Link href={"/products"}>
+            <Image
+              src="/images/octopusNavLogo.svg"
+              alt="Octopus Market Logo"
+              width={170}
+              height={36}
+            />
+          </Link>
         </div>
       </div>
-      <ul className="hidden md:flex space-x-4 dark:text-slate-100 text-slate-900">
-        <li className="bg-blue-500 hover:cursor-pointer rounded-md text-slate-100 px-4 py-2">
-          Home
-        </li>
-        <li className="px-4 py-2 hover:cursor-pointer">Blog</li>
-        <li className="px-4 py-2 hover:cursor-pointer">Portfolio</li>
-        <li className="px-4 py-2 hover:cursor-pointer">
-          <Link href={"/login"}>Login</Link>
-        </li>
-      </ul>
+      <LogInButton />
       <button className="rounded-full bg-blue-500 p-2 md:hidden">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="currentColor"
           aria-hidden="true"
-          className="h-6 w-6 dark:text-slate-900 text-slate-100"
+          className="h-6 w-6  text-slate-100"
         >
           <path
             fillRule="evenodd"
