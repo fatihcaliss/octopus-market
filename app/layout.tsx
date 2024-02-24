@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { HeaderMegaMenu } from "@/components/HeaderMegaMenu/HeaderMegaMenu";
 import Providers from "@/components/Providers";
 import ToastProvider from "@/components/ToastProvider/toast.provider";
+import { ReactQueryProvider } from "@/components/ReactQueryProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,10 +21,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          <ToastProvider>
-            {/* <HeaderMegaMenu /> */}
-            {children}
-          </ToastProvider>
+          <ReactQueryProvider>
+            <ToastProvider>{children}</ToastProvider>
+          </ReactQueryProvider>
         </Providers>
       </body>
     </html>
