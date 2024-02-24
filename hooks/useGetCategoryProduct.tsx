@@ -8,7 +8,7 @@ const useGetCategoryProducts = (categoryName: string) => {
     error,
     isLoading,
   } = useQuery<IProductsResponse>({
-    queryKey: ["getCategoryProducts"],
+    queryKey: ["getCategoryProducts", categoryName],
     queryFn: () => fetchProductsByCategoryName(categoryName),
     enabled: !!categoryName,
   });

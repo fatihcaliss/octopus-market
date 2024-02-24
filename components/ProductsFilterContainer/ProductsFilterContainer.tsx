@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import useGetAllCategories from "@/hooks/useGetAllCategories";
 import { debounce } from "@/utils/debounce/debounce";
+import useGetProducts from "@/hooks/useGetProducts";
 
 interface IProductsFilterContainerProps {
   setFilterCategory: Dispatch<SetStateAction<object>>;
@@ -37,6 +38,10 @@ export const ProductsFilterContainer = ({
 
   const handleClear = () => {
     setSelectedCategory(null);
+    setFilterCategory((prevParams) => ({
+      ...prevParams,
+      category: "",
+    }));
   };
 
   return (

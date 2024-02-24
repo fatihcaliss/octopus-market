@@ -6,8 +6,6 @@ import Image from "next/image";
 export function LogInButton() {
   const { data: session } = useSession();
 
-  console.log("session", session);
-
   if (session?.user) {
     return (
       <div className="flex gap-5">
