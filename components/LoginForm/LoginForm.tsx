@@ -5,6 +5,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import loginPagebannerPng from "../../public/images/loginPagebanner.png";
 
 type FormData = {
   username: string;
@@ -49,11 +50,13 @@ const LoginForm = () => {
             height={36}
           />
           <Image
-            src="/images/loginPageBanner.PNG"
+            src={loginPagebannerPng}
             alt="Octopus Market Login Banner"
             width={411}
             height={411}
             className="m-auto"
+            loading="lazy"
+            placeholder="blur"
           />
           <h1 className="text-3xl font-semibold mb-6 text-black">
             Let Free Your Creativity with Our Intuitive Content Creator
