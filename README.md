@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Octopus-Market
 
-## Getting Started
+This serves as an illustrative model of a commercial website. Please note that the information presented on this site is generated from mock data provided by https://dummyjson.com/docs/products.
 
-First, run the development server:
+## :point_right: [Click here to see on browser](https://octopus-market.vercel.app/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## About the Project
+
+- This project was developed using Next.js 14.0.1 in conjunction with the app router system and TypeScript for robust development. The styling of the application was achieved using the Tailwind UI, ensuring a visually appealing and user-friendly interface.
+
+- Authentication in this web application is implemented using next-auth in combination with credentials, offering a secure login experience for users. You can use any user's credentials from [dummyjson.com/user](https://dummyjson.com/users). Also you can use placeholder data which is on login page:
+
+```
+username: 'kminchelle',
+password: '0lelplR',
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- The pages /products and /products/:id are protected, and you can only access them if you are logged in.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- All data utilized within the project is sourced from the https://dummyjson.com/docs API, which provides mock data to populate the website's content.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- The /products (store) page offers users the ability to filter products in two different ways: by selecting a category, entering a word for quick search. To optimize performance, title and range filters leverage a debounce function, located in the util folder, eliminating the need for larger libraries like Lodash.
 
-## Learn More
+- For efficient data management and state handling, the project relies on the tanstack query library for all network requests.
 
-To learn more about Next.js, take a look at the following resources:
+- To enhance the overall user experience and user interface (UI/UX) of the application, the "react-toastify" package has been incorporated.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+All data is fetched from the [https://dummyjson.com/](https://dummyjson.com/docs) API.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Used Packages
 
-## Deploy on Vercel
+The following packages are used in the project:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **@tanstack/react-query**: "^5.22.2"
+- **axios**: "^1.6.7",
+- **next**: "14.1.0",
+- **next-auth**: "^4.24.6",
+- **react**: "^18",
+- **react-dom**: "^18",
+- **react-hook-form**: "^7.50.1",
+- **react-image-gallery**: "^1.3.0",
+- **react-toastify**: "^10.0.4"
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Installation
+
+You can install the project packages by running the following command:
+
+- `https://github.com/fatihcaliss/octopus-market.git` – clone repository to your local
+- `cd calis-store` – go to calis-store folder
+- `npm i` – install all packages
+- `npm run dev` – start project in your local
