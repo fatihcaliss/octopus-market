@@ -4,6 +4,8 @@ This serves as an illustrative model of a commercial website. Please note that t
 
 ## :point_right: [Click here to see on browser](https://octopus-market.vercel.app/)
 
+![Project Presentation](https://github.com/fatihcaliss/octopus-market/blob/master/public/octopusMarketGIF.gif?raw=true)
+
 ## About the Project
 
 - This project was developed using Next.js 14.0.1 in conjunction with the app router system and TypeScript for robust development. The styling of the application was achieved using the Tailwind UI, ensuring a visually appealing and user-friendly interface.
