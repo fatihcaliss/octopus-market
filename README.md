@@ -21,7 +21,9 @@ password: '0lelplR',
 
 - All data utilized within the project is sourced from the https://dummyjson.com/docs API, which provides mock data to populate the website's content.
 
-- The /products (store) page offers users the ability to filter products in two different ways: by selecting a category, entering a word for quick search. To optimize performance, title and range filters leverage a debounce function, located in the util folder, eliminating the need for larger libraries like Lodash.
+- The /products (store) page offers users the ability to filter products in two different ways: by selecting a category, entering a word for quick search. To optimize performance, quick search filter leverage a debounce function, located in the util folder, eliminating the need for larger libraries like Lodash.
+
+-On /products/:id pages react-image-gallery package used for show product detail images.
 
 - For efficient data management and state handling, the project relies on the tanstack query library for all network requests.
 
