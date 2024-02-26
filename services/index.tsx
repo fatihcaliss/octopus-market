@@ -44,3 +44,22 @@ export const fetchProductCommentsById = async (productId: string) => {
   );
   return response.data;
 };
+
+//Funtction to update Cart
+export const patchUserCart = async (productId?: string) => {
+  const payload = {
+    merge: true,
+    products: [
+      {
+        id: productId,
+        quantity: 1,
+      },
+    ],
+  };
+  const response = await axios.put(`https://dummyjson.com/carts/1`, payload, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  return response.data;
+};

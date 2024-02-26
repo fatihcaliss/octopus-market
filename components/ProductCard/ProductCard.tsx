@@ -1,3 +1,4 @@
+import useCartMutation from "@/hooks/useCartMutation";
 import { IProduct } from "@/models/product.model";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,6 +8,7 @@ interface IProductCardProps {
 }
 
 export const ProductCard = ({ product }: IProductCardProps) => {
+  const mutation = useCartMutation();
   const filledStars = Array.from(
     { length: Math.round(product.rating) },
     (_, index) => (
@@ -73,6 +75,7 @@ export const ProductCard = ({ product }: IProductCardProps) => {
             onClick={(e) => {
               e.preventDefault();
               //   e.stopPropagation();
+              mutation.mutate(`${product.id}`);
             }}
           >
             Add to Cart

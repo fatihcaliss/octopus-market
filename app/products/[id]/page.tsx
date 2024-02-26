@@ -1,11 +1,13 @@
 "use client";
 import { ProductDetailContent } from "@/components/ProductDetailContent/ProductDetailContent";
+import useCartMutation from "@/hooks/useCartMutation";
 import useGetProductComments from "@/hooks/useGetProductComments";
 import useGetProductDetail from "@/hooks/useGetProductDetail";
 import { useRouter } from "next/navigation";
 import ImageGallery from "react-image-gallery";
 
 const ProductDetailPage = ({ params }: { params: { id: string } }) => {
+  const mutation = useCartMutation();
   const { productDetailData, isFetching, error } = useGetProductDetail(
     params.id
   );
@@ -27,7 +29,7 @@ const ProductDetailPage = ({ params }: { params: { id: string } }) => {
       </div>
     );
   }
-  console.log("productDetailData", productDetailData);
+
   return (
     <div>
       <div className="grid grid-cols-12 gap-20 mt-8 mx-40 max-w-full">
@@ -54,7 +56,10 @@ const ProductDetailPage = ({ params }: { params: { id: string } }) => {
             <p>{productDetailData.description}</p>
           </div>
           <p className="font-bold text-3xl">${productDetailData.price}</p>
-          <button className=" bg-[#00B500] text-white px-4 py-2   rounded-md z-50">
+          <button
+            className=" bg-[#00B500] text-white px-4 py-2   rounded-md z-50"
+            onClick={() => mutation.mutate(params.id)}
+          >
             Add to Cart
           </button>
         </div>
