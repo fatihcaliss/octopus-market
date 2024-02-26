@@ -49,7 +49,7 @@ const LoginForm = () => {
             height={36}
           />
           <Image
-            src="/images/loginPageBanner.svg"
+            src="/images/loginPageBanner.png"
             alt="Octopus Market Login Banner"
             width={411}
             height={411}
